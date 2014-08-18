@@ -1,1 +1,3 @@
 references.tex
+*.aux
+*.log
