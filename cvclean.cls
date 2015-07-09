@@ -388,7 +388,7 @@
         }
 
     \newenvironment{presentations}{%
-        \makebox[\textwidth][l]{\textbf{Presentations}}%
+        \makebox[\textwidth][l]{\textbf{Invited Talks}}%
         \begin{enumerate}%
         \newenvironment{talk}{%
             \newif\ifmisc\miscfalse%
