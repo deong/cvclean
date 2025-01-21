@@ -41,7 +41,7 @@
 }
 \ProcessOptions
 \LoadClass{article}
-\RequirePackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+\RequirePackage[left=0.7in,top=0.7in,right=0.7in,bottom=0.7in]{geometry}
 \RequirePackage{calc}
 \setlength{\parindent}{0pt}
 
@@ -74,14 +74,17 @@
 \newcommand{\makeheader}{%
     \begin{center}
     {\LARGE\textbf{\@author}}
-
+    \ifposition\\\medskip{\large\@position}\fi
+    
     \smallskip
     \hrulefill 
     \smallskip 
 
-    {\normalsize \ifposition\@position \\ \fi}{\small \@address
-      $\quad\bullet\quad$ \@home $\quad\bullet\quad$ \@email \ifurl
-      $\quad\bullet\quad$ \@url\fi}
+    % {\large \ifposition\@position \\ \fi}
+    {\small \ifaddress\@address
+      $\quad\bullet\quad$\fi \@home $\quad\bullet\quad$ \@email \ifurl
+      % $\quad\bullet\quad$
+      \@url\fi}
 
     \hrulefill
 
@@ -130,6 +133,7 @@
         \newif\ifgpa\gpafalse%
         \newif\ifother\otherfalse%
         \newif\ifadvisor\advisorfalse%
+        \newif\ifyear\yearfalse%
         \newcommand{\type}[1]{\def\@type{####1}}
         \renewcommand{\year}[1]{\def\@year{####1}}
         \newcommand{\school}[1]{\def\@school{####1}}
@@ -138,9 +142,9 @@
         \newcommand{\advisor}[1]{\def\@advisor{####1}\advisortrue}
         \newcommand{\other}[1]{\def\@other{####1}\othertrue}}
         {\item \textbf{\@type}, \@school. \\%
-          \ifthesis Thesis:\ \textit{\@thesis}.\\\fi%
-          \ifadvisor Advisor: \@advisor.\\\fi%
-          \@year.
+          \ifthesis Thesis:\ \textit{\@thesis}.\fi%
+          %\ifadvisor Advisor: \@advisor.\fi%
+          %\ifyear\\\@year.\fi%
         }
     }
     {
